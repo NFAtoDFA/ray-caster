@@ -36,4 +36,11 @@ class Bar{
         int get_len();
 };
 
+class Wall{
+    private:
+        Pos2D p1, p2;
+    public:
+        Wall(Pos2D, Pos2D);
+};
+
 

@@ -42,3 +42,6 @@ int Bar::get_len(){
 void Bar::draw(SDL_Renderer* r){
     draw_line(r, color, start, end);
 }
+
+//implementation of the Wall
+Wall::Wall(Pos2D p1, Pos2D p2): p1(p1),p2(p2) {}
