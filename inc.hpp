@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <vector>
 
 class Color
 {
@@ -20,8 +21,8 @@ class Pos2D{
         Pos2D();
 };
 
-void draw_pixel();
-void draw_line();
+void draw_pixel(SDL_Renderer*, Color, Pos2D);
+void draw_line(SDL_Renderer*, Color, Pos2D, Pos2D);
 
 class Bar{
     private:
@@ -36,11 +37,20 @@ class Bar{
         int get_len();
 };
 
-class Wall{
-    private:
-        Pos2D p1, p2;
+class Line{
     public:
-        Wall(Pos2D, Pos2D);
+        Pos2D p1, p2;
+        Line(Pos2D, Pos2D);
+};
+
+class Map{
+    private:
+        std::vector<Line> walls;
+        Pos2D size;
+    public:
+        Map(int w, int h);
+        void create_wall(Pos2D, Pos2D);
+        void draw(SDL_Renderer* r);
 };
 
 

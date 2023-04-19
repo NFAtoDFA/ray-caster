@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include <vector>
 #include "inc.hpp"
 
 Color::Color(int x,int y, int z, int q): r(x),g(y),b(z),a(q) {}
@@ -32,7 +33,7 @@ Bar::Bar(int x, int len, int h, int r, int g, int b) {
     color.b = b;
 }
 void Bar::set_len(int l){
-    length = 0;
+    length = l;
     start.y = height/2 - l/2;
     end.y = height/2 + l/2;
 }
@@ -44,4 +45,18 @@ void Bar::draw(SDL_Renderer* r){
 }
 
 //implementation of the Wall
-Wall::Wall(Pos2D p1, Pos2D p2): p1(p1),p2(p2) {}
+Line::Line(Pos2D p1, Pos2D p2): p1(p1),p2(p2) {}
+
+Map::Map(int w, int h){
+    size.x = w;
+    size.y = h;
+}
+void Map::create_wall(Pos2D a, Pos2D b){
+    walls.push_back(Line(a,b));
+}
+void Map::draw(SDL_Renderer* r){
+    for (int i = 0; i < walls.size(); i++)
+    {
+        draw_line(r, Color(255,255,255,255), walls[i].p1, walls[i].p2);
+    }
+}

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
+#include <cstdlib>
 #include "inc.hpp"
 
 #include <SDL2/SDL.h>
@@ -8,7 +9,7 @@
 #define PI           3.14159265358979323846
 
 
-const int WIDTH = 200, HEIGHT = 600;
+const int WIDTH = 800, HEIGHT = 600;
 
 int main(){
 
@@ -43,6 +44,10 @@ int main(){
         bars.push_back(Bar(i,(double)HEIGHT/WIDTH * i,HEIGHT,(255 - ((double)255/WIDTH) * i),255,255));
     }
 
+    Map map(100,100);
+    map.create_wall(Pos2D(0,0),Pos2D(30,27));
+    map.create_wall(Pos2D(30, 10),Pos2D(50,67));
+
     while (true){
         SDL_SetRenderDrawColor(renderer,0,0,0,255);
         SDL_RenderClear(renderer);
@@ -55,15 +60,15 @@ int main(){
         //b2.draw(renderer);
 
         for (int i = 0; i < WIDTH; i++){
-            if (i == 0) {
-
-            }
-            else {
-                bars[WIDTH -1 -i].set_len(bars[WIDTH - i].get_len());
+            if(i != WIDTH - 1){
+                bars[i].set_len(bars[i+1].get_len());
             }
             bars[i].draw(renderer);
         }
-        bars[WIDTH -1].set_len(bars[0].get_len());
+
+        bars[WIDTH - 1].set_len(std::rand() % (HEIGHT/10));
+
+        map.draw(renderer); 
 
         if( SDL_PollEvent( &windowEvent)){
             if ( SDL_QUIT == windowEvent.type)
@@ -71,7 +76,6 @@ int main(){
                 break;
             }
         }
-
         SDL_RenderPresent(renderer);
     }
     //yo
