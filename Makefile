@@ -7,7 +7,7 @@ DEPS= inc.hpp
 	$(CC) -c -o $@ $< $(CFLAGS)
 
 raycast: rayCast.o inc.o
-	$(CC) -o Program rayCast.o inc.o $(CFLAGS)
+	$(CC) -o prog.out rayCast.o inc.o $(CFLAGS)
 
 clean: 
 	rm -f *.o

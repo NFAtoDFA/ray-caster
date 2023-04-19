@@ -36,6 +36,9 @@ void Bar::set_len(int l){
     start.y = height/2 - l/2;
     end.y = height/2 + l/2;
 }
+int Bar::get_len(){
+    return length;
+}
 void Bar::draw(SDL_Renderer* r){
     draw_line(r, color, start, end);
 }

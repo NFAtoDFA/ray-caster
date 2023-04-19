@@ -33,4 +33,7 @@ class Bar{
         Bar(int, int, int, int, int, int);
         void draw(SDL_Renderer *);
         void set_len(int);
+        int get_len();
 };
+
+

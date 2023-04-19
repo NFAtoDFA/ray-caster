@@ -55,8 +55,15 @@ int main(){
         //b2.draw(renderer);
 
         for (int i = 0; i < WIDTH; i++){
+            if (i == 0) {
+
+            }
+            else {
+                bars[WIDTH -1 -i].set_len(bars[WIDTH - i].get_len());
+            }
             bars[i].draw(renderer);
         }
+        bars[WIDTH -1].set_len(bars[0].get_len());
 
         if( SDL_PollEvent( &windowEvent)){
             if ( SDL_QUIT == windowEvent.type)
