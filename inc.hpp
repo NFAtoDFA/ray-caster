@@ -1,6 +1,17 @@
 #include <SDL2/SDL.h>
 #include <vector>
 
+class Camera
+{
+    private:
+        Pos2D pos,dir;
+        double fov;
+        int range;
+        std::vector<Line> rays;
+    public:
+        Camera(Pos2D, double, double, int);
+};
+
 class Color
 {
     public:

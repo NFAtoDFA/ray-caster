@@ -2,6 +2,16 @@
 #include <vector>
 #include "inc.hpp"
 
+Camera::Camera(Pos2D p, Pos2D d, double f, int rays){
+    pos = p;
+    dir = d;
+    fov = f;
+    for(int i = 0; i < rays; i++){
+        rays.push_back(Line(pos, ))
+    }
+
+}
+
 Color::Color(int x,int y, int z, int q): r(x),g(y),b(z),a(q) {}
 Color::Color(int x, int y, int z): Color(x,y,z,255) {}
 Color::Color(): Color(0,0,0,255) {}

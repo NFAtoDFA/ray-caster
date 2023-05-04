@@ -47,6 +47,10 @@ int main(){
     Map map(100,100);
     map.create_wall(Pos2D(0,0),Pos2D(30,27));
     map.create_wall(Pos2D(30, 10),Pos2D(50,67));
+    for(int i = 0; i < 10; i++){
+        map.create_wall(Pos2D(std::rand() % 100,std::rand() % 100),Pos2D(std::rand() % 100,std::rand() % 100));
+    }
+
 
     while (true){
         SDL_SetRenderDrawColor(renderer,0,0,0,255);
